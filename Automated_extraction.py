@@ -79,6 +79,9 @@ keyboard_listener.start()
 # Block here until Esc triggers keyboard_listener to stop
 keyboard_listener.join()
 
+with open("recorded_actions_mod.json", "w") as f:
+    json.dump(recorded_actions, f, indent=4)
+
 # At this point both listeners are stopped; Convert to DataFrame
 df = pd.DataFrame(recorded_actions)
 

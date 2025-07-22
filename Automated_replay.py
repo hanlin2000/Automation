@@ -79,10 +79,10 @@ def execute_action(action):
                 px, py = cx, cy
             elif action["image"] == "Screenshots\Screenshot_sample_search.jpg":
                 px, py = cx + 200, cy
-            elif action["image"] == "Screenshots\Screenshot_simdist_loc.jpg":
+            elif action["image"] == "Screenshots\Screenshot_simdist_loc.jpg" or "Screenshots\Screenshot_ghc_loc.jpg":
                 px, py = cx - 35, cy
             elif action["image"] == "Screenshots\Screenshot_xlsx_export.jpg":
-                px, py = cx + 100, cy
+                px, py = cx, cy
 
             else:
                 # default to center for any other image
