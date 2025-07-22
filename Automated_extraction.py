@@ -79,11 +79,7 @@ keyboard_listener.start()
 # Block here until Esc triggers keyboard_listener to stop
 keyboard_listener.join()
 
-# At this point both listeners are stopped
-with open("recorded_actions.json", "w") as f:
-    json.dump(recorded_actions, f, indent=4)
-
-# Convert to DataFrame
+# At this point both listeners are stopped; Convert to DataFrame
 df = pd.DataFrame(recorded_actions)
 
 # Optional: Fill NaNs for missing fields so the Excel file is cleaner
@@ -92,4 +88,4 @@ df.fillna("", inplace=True)
 # Export to Excel
 df.to_excel("recorded_actions.xlsx", index=False)
 
-print("Recording complete. Actions saved to recorded_actions.json and recorded_actions.json")
+print("Recording complete. Actions saved to recorded_actions.xlsx")

@@ -75,18 +75,22 @@ def execute_action(action):
             cx, cy = pyautogui.center(loc)
 
             # special offsets per image
-            if action["image"] == "Screenshot_dataset_button.jpg":
+            if action["image"] == "Screenshots\Screenshot_dataset_button.jpg":
                 px, py = cx, cy
-            elif action["image"] == "Screenshot_sample_selection.jpg":
+            elif action["image"] == "Screenshots\Screenshot_sample_search.jpg":
                 px, py = cx + 200, cy
-            elif action["image"] == "Screenshot_simdist_loc.jpg":
-                px, py = cx - 20, cy
+            elif action["image"] == "Screenshots\Screenshot_simdist_loc.jpg":
+                px, py = cx - 35, cy
+            elif action["image"] == "Screenshots\Screenshot_xlsx_export.jpg":
+                px, py = cx + 100, cy
+
             else:
                 # default to center for any other image
                 px, py = cx, cy
 
             pyautogui.click(px, py)
             print(f"Clicked {action['image']} at {(px, py)}")
+            # time.sleep(5)
         else:
             # fall back to hard‑coded coordinates
             pyautogui.click(x=action["x"], y=action["y"])
@@ -143,7 +147,7 @@ def replay_iteration(replacement_string):
                 for ch in replacement_string:
                     keyboard.press(ch)
                     keyboard.release(ch)
-                    time.sleep(0.05)
+                    # time.sleep(0.05)
             continue  # skip any further handling of this action
 
         # 4) if in replacement mode, skip original alphanumeric key events
