@@ -67,7 +67,7 @@ def execute_action(action):
         # Optional: Implement the if-else if dynamic clicking (image recognition) is desired
         if "image" in action:
             # try to find the button on‑screen
-            loc = pyautogui.locateOnScreen(action["image"], confidence=0.9)
+            loc = pyautogui.locateOnScreen(action["image"], confidence=0.95)
             if not loc:
                 print(f"⚠️  Couldn’t find {action['image']} on screen — skipping click.")
                 return
@@ -78,9 +78,9 @@ def execute_action(action):
             if action["image"] == "Screenshots\Screenshot_dataset_button.jpg":
                 px, py = cx, cy
             elif action["image"] == "Screenshots\Screenshot_sample_search.jpg":
-                px, py = cx + 200, cy
+                px, py = cx+143, cy
             elif action["image"] == "Screenshots\Screenshot_simdist_loc.jpg" or "Screenshots\Screenshot_ghc_loc.jpg":
-                px, py = cx - 35, cy
+                px, py = cx, cy
             elif action["image"] == "Screenshots\Screenshot_xlsx_export.jpg":
                 px, py = cx, cy
 
@@ -90,7 +90,9 @@ def execute_action(action):
 
             pyautogui.click(px, py)
             print(f"Clicked {action['image']} at {(px, py)}")
-            # time.sleep(5)
+            # time.sleep(3)
+
+
         else:
             # fall back to hard‑coded coordinates
             pyautogui.click(x=action["x"], y=action["y"])
