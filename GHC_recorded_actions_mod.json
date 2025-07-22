@@ -1,0 +1,275 @@
+[
+    {
+        "type": "click",
+        "x": 1059.0,
+        "y": 727.0,
+        "button": "Button.left",
+        "time": 0.0
+    },
+    {
+        "type": "click",
+        "x": 114.0,
+        "y": 252.0,
+        "button": "Button.left",
+        "time": 0.05
+    },
+    {
+        "type": "click",
+        "x": 114.0,
+        "y": 252.0,
+        "button": "Button.left",
+        "time": 0.1
+    },
+    {
+        "type": "click",
+        "x": 114.0,
+        "y": 252.0,
+        "button": "Button.left",
+        "time": 0.15000000000000002
+    },
+    {
+        "type": "key_press",
+        "time": 0.2,
+        "key": "Key.backspace"
+    },
+    {
+        "type": "key_release",
+        "time": 0.25,
+        "key": "Key.backspace"
+    },
+    {
+        "type": "replace",
+        "time": 0.3
+    },
+    {
+        "type": "replace",
+        "time": 0.35
+    },
+    {
+        "type": "key_press",
+        "time": 0.39999999999999997,
+        "key": "Key.enter"
+    },
+    {
+        "type": "key_release",
+        "time": 0.44999999999999996,
+        "key": "Key.enter",
+        "comment": "waiting for search results"
+    },
+    {
+        "type": "click",
+        "time": 8.45,
+        "image": "Screenshots\\Screenshot_sample_search.jpg"
+    },
+    {
+        "type": "key_press",
+        "time": 8.5,
+        "key": "Key.cmd"
+    },
+    {
+        "type": "key_press",
+        "time": 8.55,
+        "key": "Key.up"
+    },
+    {
+        "type": "key_release",
+        "time": 8.600000000000001,
+        "key": "Key.up"
+    },
+    {
+        "type": "key_release",
+        "time": 8.650000000000002,
+        "key": "Key.cmd",
+        "comment": "waiting for request details"
+    },
+    {
+        "type": "key_press",
+        "time": 22.650000000000002,
+        "key": "Key.end"
+    },
+    {
+        "type": "key_release",
+        "time": 22.700000000000003,
+        "key": "Key.end"
+    },
+    {
+        "type": "click",
+        "time": 25.700000000000003,
+        "image": "Screenshots\\Screenshot_dataset_button.jpg"
+    },
+    {
+        "type": "key_press",
+        "time": 25.750000000000004,
+        "key": "Key.end"
+    },
+    {
+        "type": "key_release",
+        "time": 25.800000000000004,
+        "key": "Key.end",
+        "comment": "looking for ghc button"
+    },
+    {
+        "type": "click",
+        "time": 28.800000000000004,
+        "image": "Screenshots\\Screenshot_ghc_loc.jpg"
+    },
+    {
+        "type": "key_press",
+        "time": 28.850000000000005,
+        "key": "Key.cmd"
+    },
+    {
+        "type": "key_press",
+        "time": 28.900000000000006,
+        "key": "Key.up"
+    },
+    {
+        "type": "key_release",
+        "time": 28.950000000000006,
+        "key": "Key.up"
+    },
+    {
+        "type": "key_release",
+        "time": 29.000000000000007,
+        "key": "Key.cmd",
+        "comment": "waiting for test data to load"
+    },
+    {
+        "type": "click",
+        "time": 43.00000000000001,
+        "image": "Screenshots\\Screenshot_xlsx_export.jpg",
+        "comment": "export data and waiting for download"
+    },
+    {
+        "type": "click",
+        "x": 1718.0,
+        "y": 88.0,
+        "button": "Button.left",
+        "time": 51.00000000000001,
+        "comment": "open in file explorer"
+    },
+    {
+        "type": "click",
+        "x": 359.0,
+        "y": 254.0,
+        "button": "Button.left",
+        "time": 54.00000000000001,
+        "comment": "select the file"
+    },
+    {
+        "type": "key_press",
+        "time": 55.00000000000001,
+        "key": "Key.backspace"
+    },
+    {
+        "type": "key_release",
+        "time": 56.00000000000001,
+        "key": "Key.backspace"
+    },
+    {
+        "type": "replace",
+        "time": 57.00000000000001
+    },
+    {
+        "type": "replace",
+        "time": 58.00000000000001
+    },
+    {
+        "type": "key_press",
+        "time": 58.050000000000004,
+        "key": "Key.enter"
+    },
+    {
+        "type": "key_release",
+        "time": 58.1,
+        "key": "Key.enter"
+    },
+    {
+        "type": "click",
+        "x": 905.0,
+        "y": 264.0,
+        "button": "Button.left",
+        "time": 58.15
+    },
+    {
+        "type": "key_press",
+        "time": 58.199999999999996,
+        "key": "Key.ctrl_l"
+    },
+    {
+        "type": "key_press",
+        "time": 58.24999999999999,
+        "key": "w"
+    },
+    {
+        "type": "key_release",
+        "time": 58.29999999999999,
+        "key": "w"
+    },
+    {
+        "type": "key_release",
+        "time": 58.34999999999999,
+        "key": "Key.ctrl_l"
+    },
+    {
+        "type": "click",
+        "x": 905.0,
+        "y": 264.0,
+        "button": "Button.left",
+        "time": 58.399999999999984
+    },
+    {
+        "type": "key_press",
+        "time": 58.44999999999998,
+        "key": "Key.ctrl_l"
+    },
+    {
+        "type": "key_press",
+        "time": 58.49999999999998,
+        "key": "w"
+    },
+    {
+        "type": "key_release",
+        "time": 58.549999999999976,
+        "key": "w"
+    },
+    {
+        "type": "key_release",
+        "time": 58.59999999999997,
+        "key": "Key.ctrl_l"
+    },
+    {
+        "type": "click",
+        "x": 905.0,
+        "y": 264.0,
+        "button": "Button.left",
+        "time": 58.64999999999997
+    },
+    {
+        "type": "key_press",
+        "time": 58.69999999999997,
+        "key": "Key.ctrl_l"
+    },
+    {
+        "type": "key_press",
+        "time": 58.749999999999964,
+        "key": "w"
+    },
+    {
+        "type": "key_release",
+        "time": 58.79999999999996,
+        "key": "w"
+    },
+    {
+        "type": "key_release",
+        "time": 58.84999999999996,
+        "key": "Key.ctrl_l"
+    },
+    {
+        "type": "click",
+        "x": 905.0,
+        "y": 264.0,
+        "button": "Button.left",
+        "time": 58.899999999999956
+    }
+]
