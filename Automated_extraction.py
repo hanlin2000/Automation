@@ -2,6 +2,7 @@ import json
 import time
 from pynput import mouse, keyboard
 from pynput.keyboard import Key, KeyCode
+import pandas as pd
 
 # Give 5 s to switch to the target window
 time.sleep(5)
@@ -82,4 +83,13 @@ keyboard_listener.join()
 with open("recorded_actions.json", "w") as f:
     json.dump(recorded_actions, f, indent=4)
 
-print("Recording complete. Actions saved to recorded_actions.json")
+# Convert to DataFrame
+df = pd.DataFrame(recorded_actions)
+
+# Optional: Fill NaNs for missing fields so the Excel file is cleaner
+df.fillna("", inplace=True)
+
+# Export to Excel
+df.to_excel("recorded_actions.xlsx", index=False)
+
+print("Recording complete. Actions saved to recorded_actions.json and recorded_actions.json")

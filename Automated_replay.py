@@ -132,52 +132,27 @@ def replay_iteration(replacement_string):
         if delay > 0:
             time.sleep(delay)
 
-        # 3) handle potential standalone Ctrl_L toggle
-        if action["type"] == "key_press" and action.get("key") == "Key.ctrl_l":
-            # peek at the very next event
-            next_idx = i + 1
-            if next_idx < len(recorded_actions):
-                next_action = recorded_actions[next_idx]
-                # if next event is the matching Ctrl_L release, treat as toggle
-                if ( next_action["type"] == "key_release"
-                     and next_action.get("key") == "Key.ctrl_l" ):
-                    switch_on = not switch_on
-                    print(f"{'Entering' if switch_on else 'Exiting'} replacement mode")
-                    # only inject when turning ON
-                    if switch_on:
-                        for ch in replacement_string:
-                            keyboard.press(ch)
-                            keyboard.release(ch)
-                            time.sleep(0.05)
-                    # skip both this press and the next release
-                    continue
+        # 3) toggle replacement mode on every 'replace' action
+        if action["type"] == "replace":
+            switch_on = not switch_on
+            state = "Entering" if switch_on else "Exiting"
+            print(f"{state} replacement mode")
 
-            # otherwise it’s part of a chord—just replay it
-            execute_action(action)
-            print(f"Executed chord key_press: {action}")
-            continue
+            # when switching ON, inject the replacement string immediately
+            if switch_on:
+                for ch in replacement_string:
+                    keyboard.press(ch)
+                    keyboard.release(ch)
+                    time.sleep(0.05)
+            continue  # skip any further handling of this action
 
-        # 4) skip the Ctrl_L release if it was consumed by toggle logic
-        if action["type"] == "key_release" and action.get("key") == "Key.ctrl_l":
-            # but only skip if the previous press was treated as toggle
-            # (we know toggle-releases are always immediately after the toggle-press)
-            # so if switch mode just flipped, we’ll have skipped the press and now skip this.
-            # Otherwise we fall through to replay below.
-            prev_idx = i - 1
-            if prev_idx >= 0:
-                prev = recorded_actions[prev_idx]
-                if ( prev["type"] == "key_press"
-                     and prev.get("key") == "Key.ctrl_l"
-                     and (recorded_actions.index(action) == recorded_actions.index(prev) + 1) ):
-                    continue
-
-        # 5) if in replacement mode, skip alphanumeric key events
+        # 4) if in replacement mode, skip original alphanumeric key events
         if switch_on and action["type"] in ("key_press", "key_release"):
             k = action.get("key", "")
-            if len(k) == 1 and k.isalnum():
+            if len(k) == 1:
                 continue
 
-        # 6) otherwise replay
+        # 5) otherwise replay the action as before
         execute_action(action)
         print(f"Executed {i+1}/{len(recorded_actions)}: {action}")
 
