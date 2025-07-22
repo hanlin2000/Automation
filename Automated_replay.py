@@ -8,6 +8,10 @@ import string
 
 stop_requested = False
 
+txt_path = input('.txt File path:\n')
+json_path = input('.json File path:\n')
+
+
 def on_global_key_press(key):
     global stop_requested
     if key == Key.esc:
@@ -22,7 +26,7 @@ time.sleep(3)
 print("Replaying recorded actions...")
 
 # Load recorded actions + roll entries
-with open("recorded_actions_LIMS.json", "r") as f:
+with open(json_path, "r") as f:
     recorded_actions = json.load(f)
 
 
@@ -47,9 +51,9 @@ def dynamic_string_generator(custom_entries, length=1, infinity=False):
 
 
 
-with open('roll.txt', 'r') as file:
+with open(txt_path, 'r') as file:
     custom = [line.strip() for line in file]
-gen = dynamic_string_generator(custom, length=1, infinity=True)
+gen = dynamic_string_generator(custom, length=1, infinity=False)
 
 #############
 # Robo Time #
@@ -60,7 +64,34 @@ keyboard = Controller()
 def execute_action(action):
     t = action["type"]
     if t == "click":
-        pyautogui.click(x=action["x"], y=action["y"])
+        # Optional: Implement the if-else if dynamic clicking (image recognition) is desired
+        if "image" in action:
+            # try to find the button on‑screen
+            loc = pyautogui.locateOnScreen(action["image"], confidence=0.9)
+            if not loc:
+                print(f"⚠️  Couldn’t find {action['image']} on screen — skipping click.")
+                return
+
+            cx, cy = pyautogui.center(loc)
+
+            # special offsets per image
+            if action["image"] == "Screenshot_dataset_button.jpg":
+                px, py = cx, cy
+            elif action["image"] == "Screenshot_sample_selection.jpg":
+                px, py = cx + 200, cy
+            elif action["image"] == "Screenshot_simdist_loc.jpg":
+                px, py = cx - 20, cy
+            else:
+                # default to center for any other image
+                px, py = cx, cy
+
+            pyautogui.click(px, py)
+            print(f"Clicked {action['image']} at {(px, py)}")
+        else:
+            # fall back to hard‑coded coordinates
+            pyautogui.click(x=action["x"], y=action["y"])
+            print(f"Clicked coords {(action['x'], action['y'])}")
+
     elif t == "scroll":
         pyautogui.scroll(action["dy"], x=action["x"], y=action["y"])
     elif t == "key_press":
